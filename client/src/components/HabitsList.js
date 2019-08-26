@@ -44,6 +44,7 @@ class HabitsList extends React.Component {
               <Button onClick={this.onDeleteClick.bind(this, _id)}>
                 Delete Habit
               </Button>
+              <Button>DONE</Button>
               <a href="#" role="button">
                 stats
               </a>

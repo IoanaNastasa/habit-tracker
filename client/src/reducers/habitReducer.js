@@ -22,24 +22,21 @@ export default function(state = initialState, action) {
         ...state,
         habits: [action.payload, ...state.habits]
       };
-    // case UPDATE_HABIT:
-    //   return {
-    //     ...state,
-    //     habits: [
-    //       state.habits.map(habit => {
-    //         if (habit._id === action.payload.id) {
-    //           return {
-    //             ...habit,
-    //             habit.history: [
-    //                  action.payload.today,
-    //               ...history
-    //             ]
-    //           };
-    //         }
-    //       }),
-    //       ...state.habits
-    //     ]
-    //   };
+    case UPDATE_HABIT:
+      return {
+        ...state,
+        habits: [
+          state.habits.map(habit => {
+            if (habit._id === action.payload.id) {
+              return {
+                ...habit,
+                history: [...habit.history, action.payload.today]
+              };
+            }
+          }),
+          ...state.habits
+        ]
+      };
     case DELETE_HABIT:
       return {
         ...state,
