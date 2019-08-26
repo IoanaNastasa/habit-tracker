@@ -10,7 +10,7 @@ app.use(express.json());
 const { db } = require("./config");
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useNewUrlParser: true, useFindAndModify: false })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 

@@ -8,16 +8,44 @@ import {
   FormGroup,
   Button
 } from "reactstrap";
+import { connect } from "react-redux";
+import { addHabit } from "../actions/habitActions";
 
 class NewHabit extends React.Component {
+  state = { habitName: "" };
+  newDate() {
+    const dateObj = new Date();
+    const month = dateObj.getMonth() + 1; //months from 1-12
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const newdate = year + "/" + month + "/" + day;
+    return newdate;
+  }
+  onChange = e => {
+    this.setState({
+      habitName: e.target.value
+    });
+  };
+  onSubmit = e => {
+    e.preventDefault();
+    const today = this.newDate();
+    const newHabit = {
+      habitName: this.state.habitName,
+      history: []
+    };
+    this.props.addHabit(newHabit);
+  };
   render() {
     return (
       <ListGroupItem className="list-group-item-light my-2 py-4">
-        <Form>
+        <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <InputGroup>
               <InputGroupAddon addonType="prepend">I want to </InputGroupAddon>
-              <Input placeholder="e.g. read, meditate" />
+              <Input
+                onChange={this.onChange}
+                placeholder="e.g. read, meditate"
+              />
             </InputGroup>
             <Button color="danger" style={{ marginTop: "2rem" }} block>
               Add habit
@@ -28,5 +56,13 @@ class NewHabit extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    habits: state.habits
+  };
+};
 
-export default NewHabit;
+export default connect(
+  mapStateToProps,
+  { addHabit }
+)(NewHabit);

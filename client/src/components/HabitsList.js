@@ -1,18 +1,22 @@
 import React from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { connect } from "react-redux";
-import { getHabits } from "../actions/habitActions";
+import { getHabits, deleteHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";
 import NewHabit from "./NewHabit";
 
 class HabitsList extends React.Component {
   static propTypes = {
-    getHabits: PropTypes.func.isRequired
+    getHabits: PropTypes.func.isRequired,
+    deleteHabit: PropTypes.func.isRequired
   };
   componentDidMount() {
     this.props.getHabits();
   }
-
+  onDeleteClick = _id => {
+    console.log("click");
+    this.props.deleteHabit(_id);
+  };
   render() {
     const { habits } = this.props.habits;
     return (
@@ -37,6 +41,9 @@ class HabitsList extends React.Component {
                   {`Did you ${habitName} today?`}
                 </label>
               </div>
+              <Button onClick={this.onDeleteClick.bind(this, _id)}>
+                Delete Habit
+              </Button>
               <a href="#" role="button">
                 stats
               </a>
@@ -54,5 +61,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getHabits }
+  { getHabits, deleteHabit }
 )(HabitsList);
