@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { connect } from "react-redux";
-import { getHabits, deleteHabit } from "../actions/habitActions";
+import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";
 import NewHabit from "./NewHabit";
 
@@ -13,9 +13,21 @@ class HabitsList extends React.Component {
   componentDidMount() {
     this.props.getHabits();
   }
+  newDate() {
+    const dateObj = new Date();
+    const month = dateObj.getMonth() + 1; //months from 1-12
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const newdate = year + "/" + month + "/" + day;
+    return newdate;
+  }
   onDeleteClick = _id => {
-    console.log("click");
     this.props.deleteHabit(_id);
+  };
+  onDoneClick = _id => {
+    console.log(`click id: ${_id}`);
+    const someDate = this.newDate();
+    this.props.updateHabit(_id, someDate);
   };
   render() {
     const { habits } = this.props.habits;
@@ -44,7 +56,7 @@ class HabitsList extends React.Component {
               <Button onClick={this.onDeleteClick.bind(this, _id)}>
                 Delete Habit
               </Button>
-              <Button>DONE</Button>
+              <Button onClick={this.onDoneClick.bind(this, _id)}>DONE</Button>
               <a href="#" role="button">
                 stats
               </a>
@@ -62,5 +74,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getHabits, deleteHabit }
+  { getHabits, deleteHabit, updateHabit }
 )(HabitsList);
