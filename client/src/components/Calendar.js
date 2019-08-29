@@ -31,6 +31,46 @@ export default class Calendar extends Component {
   nextYear = () => {
     this.setState({ calendarYear: this.state.calendarYear + 1 });
   };
+  // method for showing days in table cells
+  calendarDays() {
+    let firstDay =
+      new Date(this.state.calendarYear, this.state.calendarMonth).getDay() == 0
+        ? 7
+        : new Date(this.state.calendarYear, this.state.calendarMonth).getDay();
+    let daysInMonth = new Date(
+      this.state.calendarYear,
+      this.state.calendarMonth + 1,
+      0
+    ).getDate();
+    let currentDays = daysInMonth;
+    let firstRow = 0;
+    let dates = [];
+    while (currentDays > 0) {
+      let col = [];
+
+      for (let i = 1; i <= 7; i++) {
+        // start showing dates on first day of the month or
+        // if first row done show days until last day of month
+        if (
+          (firstRow == 0 && firstDay <= i) ||
+          (currentDays > 0 && firstRow === 1)
+        ) {
+          col.push(
+            <td className="text-center">{daysInMonth - currentDays + 1}</td>
+          );
+          currentDays--;
+        }
+        // days before firstday and last day of month empty
+        else if ((firstRow === 0 && firstDay > i) || currentDays == 0) {
+          col.push(<td></td>);
+        }
+      }
+      let row = <tr>{col}</tr>;
+      dates.push(row);
+      firstRow = 1;
+    }
+    return dates;
+  }
 
   render() {
     const months = [
@@ -81,7 +121,7 @@ export default class Calendar extends Component {
               <th className="text-center">Sun</th>
             </tr>
           </thead>
-          <tbody id="days"></tbody>
+          <tbody id="days">{this.calendarDays()}</tbody>
         </Table>
       </div>
     );
