@@ -1,6 +1,8 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";
 import NewHabit from "./NewHabit";
@@ -57,9 +59,7 @@ class HabitsList extends React.Component {
                 Delete Habit
               </Button>
               <Button onClick={this.onDoneClick.bind(this, _id)}>DONE</Button>
-              <a href="#" role="button">
-                stats
-              </a>
+              <Link to={{ pathname: `/calendar`, id: _id }}>stats</Link>
             </ListGroupItem>
           ))}
           <NewHabit />

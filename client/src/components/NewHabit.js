@@ -28,7 +28,6 @@ class NewHabit extends React.Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    const today = this.newDate();
     const newHabit = {
       habitName: this.state.habitName,
       history: []

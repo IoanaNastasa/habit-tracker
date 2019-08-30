@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -6,11 +7,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Button, Table } from "reactstrap";
 
-export default class Calendar extends Component {
+class Calendar extends Component {
   state = {
     calendarYear: new Date().getFullYear(),
     calendarMonth: new Date().getMonth()
   };
+  componentDidMount() {
+    let habit = this.props.habits.habits.find(
+      habit => habit._id === this.props.location.id
+    );
+    console.log(habit);
+  }
+  // on button click changes month or year
   prevMonth = () => {
     if (this.state.calendarMonth === 0) {
       this.setState({ calendarMonth: 11 });
@@ -33,6 +41,7 @@ export default class Calendar extends Component {
   };
   // method for showing days in table cells
   calendarDays() {
+    // when firstday = 0(Sunday) change to 1 ---> rendered calendar is Mon-Sunday
     let firstDay =
       new Date(this.state.calendarYear, this.state.calendarMonth).getDay() == 0
         ? 7
@@ -50,9 +59,9 @@ export default class Calendar extends Component {
 
       for (let i = 1; i <= 7; i++) {
         // start showing dates on first day of the month or
-        // if first row done show days until last day of month
+        // if first row done show days until last day of month in the regular way
         if (
-          (firstRow == 0 && firstDay <= i) ||
+          (firstRow === 0 && firstDay <= i) ||
           (currentDays > 0 && firstRow === 1)
         ) {
           col.push(
@@ -60,8 +69,8 @@ export default class Calendar extends Component {
           );
           currentDays--;
         }
-        // days before firstday and last day of month empty
-        else if ((firstRow === 0 && firstDay > i) || currentDays == 0) {
+        // days before firstday and last day of month empty cells
+        else if ((firstRow === 0 && firstDay > i) || currentDays === 0) {
           col.push(<td></td>);
         }
       }
@@ -127,3 +136,7 @@ export default class Calendar extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  habits: state.habits
+});
+export default connect(mapStateToProps)(Calendar);
