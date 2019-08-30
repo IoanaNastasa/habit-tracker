@@ -6,20 +6,23 @@ import {
   faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { Button, Table } from "reactstrap";
+import uuid from "uuid/v4";
 
 class Calendar extends Component {
   state = {
     calendarYear: new Date().getFullYear(),
-    calendarMonth: new Date().getMonth()
+    calendarMonth: new Date().getMonth(),
+    habit: {}
   };
   componentDidMount() {
     let habit = this.props.habits.habits.find(
       habit => habit._id === this.props.location.id
     );
-    console.log(habit);
+    this.setState({ habit: habit });
   }
   // on button click changes month or year
   prevMonth = () => {
+    console.log(this.state.habit.history);
     if (this.state.calendarMonth === 0) {
       this.setState({ calendarMonth: 11 });
     } else {
@@ -40,7 +43,10 @@ class Calendar extends Component {
     this.setState({ calendarYear: this.state.calendarYear + 1 });
   };
   // method for showing days in table cells
-  calendarDays() {
+  calendarDays = () => {
+    let { history } = this.state.habit;
+    console.log(history);
+
     // when firstday = 0(Sunday) change to 1 ---> rendered calendar is Mon-Sunday
     let firstDay =
       new Date(this.state.calendarYear, this.state.calendarMonth).getDay() == 0
@@ -56,30 +62,55 @@ class Calendar extends Component {
     let dates = [];
     while (currentDays > 0) {
       let col = [];
-
       for (let i = 1; i <= 7; i++) {
+        let cls = "";
         // start showing dates on first day of the month or
         // if first row done show days until last day of month in the regular way
         if (
           (firstRow === 0 && firstDay <= i) ||
           (currentDays > 0 && firstRow === 1)
         ) {
+          // check if habit's history contains the date and add class if true
+          if (history) {
+            console.log(
+              `${this.state.calendarMonth}/${daysInMonth - currentDays + 1}/${
+                this.state.calendarYear
+              }`
+            );
+            cls = history.includes(
+              `${this.state.calendarMonth + 1}/${daysInMonth -
+                currentDays +
+                1}/${this.state.calendarYear}`
+            )
+              ? "text-center lala"
+              : "text-center";
+            console.log(cls);
+          }
+          // /new
           col.push(
-            <td className="text-center">{daysInMonth - currentDays + 1}</td>
+            <td
+              key={`${this.state.calendarMonth}/${daysInMonth -
+                currentDays +
+                1}/${this.state.calendarYear}`}
+              // className="text-center"
+              className={cls}
+            >
+              {daysInMonth - currentDays + 1}
+            </td>
           );
           currentDays--;
         }
         // days before firstday and last day of month empty cells
         else if ((firstRow === 0 && firstDay > i) || currentDays === 0) {
-          col.push(<td></td>);
+          col.push(<td key={uuid()}></td>);
         }
       }
-      let row = <tr>{col}</tr>;
+      let row = <tr key={uuid()}>{col}</tr>;
       dates.push(row);
       firstRow = 1;
     }
     return dates;
-  }
+  };
 
   render() {
     const months = [

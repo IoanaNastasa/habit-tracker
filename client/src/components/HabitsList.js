@@ -20,7 +20,7 @@ class HabitsList extends React.Component {
     const month = dateObj.getMonth() + 1; //months from 1-12
     const day = dateObj.getDate();
     const year = dateObj.getFullYear();
-    const newdate = year + "/" + month + "/" + day;
+    const newdate = month + "/" + day + "/" + year;
     return newdate;
   }
   onDeleteClick = _id => {
@@ -28,8 +28,9 @@ class HabitsList extends React.Component {
   };
   onDoneClick = _id => {
     console.log(`click id: ${_id}`);
-    const someDate = this.newDate();
-    this.props.updateHabit(_id, someDate);
+    const today = this.newDate();
+    console.log(today);
+    this.props.updateHabit(_id, today);
   };
   render() {
     const { habits } = this.props.habits;

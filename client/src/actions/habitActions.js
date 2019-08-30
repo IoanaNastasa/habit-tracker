@@ -26,12 +26,15 @@ export const addHabit = habit => dispatch => {
 };
 
 export const updateHabit = (id, today = "00/00/00") => dispatch => {
-  axios.put(`api/habits/${id}`, today).then(res => {
-    dispatch({
-      type: UPDATE_HABIT,
-      payload: { id, today }
-    });
-  });
+  axios
+    .put(`api/habits/${id}`, { today: today })
+    .then(res => {
+      dispatch({
+        type: UPDATE_HABIT,
+        payload: { id, today }
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const deleteHabit = id => dispatch => {
