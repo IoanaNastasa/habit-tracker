@@ -36,7 +36,7 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   Habit.findByIdAndUpdate(
     { _id: req.params.id },
-    { $push: { history: req.body.el } }
+    { $push: { history: req.body.today } }
     // { new: true }
   )
     .then(() => res.json({ success: true }))

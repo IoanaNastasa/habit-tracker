@@ -8,6 +8,7 @@ import store from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Calendar from "./components/Calendar";
+import HabitStats from "./components/HabitStats";
 
 class App extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class App extends React.Component {
         <Router>
           <AppNavBar />
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/calendar" component={Calendar} />
+          <Route exact path="/stats" component={HabitStats} />
         </Router>
       </Provider>
     );

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -9,20 +8,17 @@ import { Button, Table } from "reactstrap";
 import uuid from "uuid/v4";
 
 class Calendar extends Component {
-  state = {
-    calendarYear: new Date().getFullYear(),
-    calendarMonth: new Date().getMonth(),
-    habit: {}
-  };
-  componentDidMount() {
-    let habit = this.props.habits.habits.find(
-      habit => habit._id === this.props.location.id
-    );
-    this.setState({ habit: habit });
+  constructor(props) {
+    super(props);
+    this.state = {
+      calendarYear: new Date().getFullYear(),
+      calendarMonth: new Date().getMonth()
+    };
   }
+
   // on button click changes month or year
   prevMonth = () => {
-    console.log(this.state.habit.history);
+    console.log(this.props.history);
     if (this.state.calendarMonth === 0) {
       this.setState({ calendarMonth: 11 });
     } else {
@@ -44,7 +40,7 @@ class Calendar extends Component {
   };
   // method for showing days in table cells
   calendarDays = () => {
-    let { history } = this.state.habit;
+    let history = this.props.history;
     console.log(history);
 
     // when firstday = 0(Sunday) change to 1 ---> rendered calendar is Mon-Sunday
@@ -82,7 +78,7 @@ class Calendar extends Component {
                 currentDays +
                 1}/${this.state.calendarYear}`
             )
-              ? "text-center lala"
+              ? "text-center bg-warning"
               : "text-center";
             console.log(cls);
           }
@@ -167,7 +163,5 @@ class Calendar extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  habits: state.habits
-});
-export default connect(mapStateToProps)(Calendar);
+
+export default Calendar;

@@ -60,7 +60,7 @@ class HabitsList extends React.Component {
                 Delete Habit
               </Button>
               <Button onClick={this.onDoneClick.bind(this, _id)}>DONE</Button>
-              <Link to={{ pathname: `/calendar`, id: _id }}>stats</Link>
+              <Link to={{ pathname: `/stats`, id: _id }}>stats</Link>
             </ListGroupItem>
           ))}
           <NewHabit />
