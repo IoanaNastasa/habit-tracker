@@ -7,7 +7,13 @@ const HabitSchema = new Schema({
     type: String
   },
   history: {
-    type: Array // {date, value: true/false}
+    type: Array
+  },
+  currentStreak: {
+    type: Number
+  },
+  maxStreak: {
+    type: Number
   }
 });
 

@@ -34,10 +34,16 @@ export const updateHabit = (id, today = "00/00/00") => (dispatch, getState) => {
   let lastDay = new Date(habit.history[habit.history.length - 1]); // last day when habit was done
   let currentStreak =
     yesterday.getTime() === lastDay.getTime() ? habit.currentStreak + 1 : 1;
-  console.log(currentStreak);
-  // /new
+  // new value for longest streak. If new current streak > maxStreak => maxStreak = new current else same
+  let maxStreak =
+    habit.maxStreak < currentStreak ? currentStreak : habit.maxStreak;
+  //
   axios
-    .put(`api/habits/${id}`, { today: today, currentStreak: currentStreak })
+    .put(`api/habits/${id}`, {
+      today: today,
+      currentStreak: currentStreak,
+      maxStreak: maxStreak
+    })
     .then(res => {
       dispatch({
         type: UPDATE_HABIT,

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav, NavItem, NavLink, Container } from "reactstrap";
-
+import { NavLink as NavLinkRouter } from "react-router-dom";
 class AppNavbar extends React.Component {
   render() {
     return (
@@ -9,7 +9,7 @@ class AppNavbar extends React.Component {
           <Container>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Register</NavLink>
+                <NavLinkRouter to="/">Home</NavLinkRouter>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">
