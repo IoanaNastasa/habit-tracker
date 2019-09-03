@@ -36,7 +36,12 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   Habit.findByIdAndUpdate(
     { _id: req.params.id },
-    { $push: { history: req.body.today } }
+    { $push: { history: req.body.today } },
+    {
+      $set: {
+        currentStreak: 11 //req.body.currentStreak
+      }
+    }
     // { new: true }
   )
     .then(() => res.json({ success: true }))
