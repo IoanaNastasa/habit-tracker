@@ -30,7 +30,10 @@ class NewHabit extends React.Component {
     e.preventDefault();
     const newHabit = {
       habitName: this.state.habitName,
-      history: []
+      history: [],
+      currentStreak: 0,
+      maxStreak: 0,
+      totalDays: 0
     };
     this.props.addHabit(newHabit);
   };

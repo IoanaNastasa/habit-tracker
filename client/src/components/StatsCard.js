@@ -1,17 +1,17 @@
 import React from "react";
 import reactstrap from "reactstrap";
 
-function StatsCard() {
+function StatsCard(props) {
   return (
     <div>
       <div
         className="card text-white bg-danger mb-3"
         style={{ maxWidth: "18rem" }}
       >
-        <div className="card-header text-center">Current Streak</div>
+        <div className="card-header text-center">{props.name}</div>
         <div className="card-body">
           <p className="card-text text-center" style={{ fontSize: "30px" }}>
-            12
+            {props.value}
           </p>
         </div>
       </div>

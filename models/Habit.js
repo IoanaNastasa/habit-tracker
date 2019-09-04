@@ -14,6 +14,9 @@ const HabitSchema = new Schema({
   },
   maxStreak: {
     type: Number
+  },
+  totalDays: {
+    type: Number
   }
 });
 

@@ -29,7 +29,10 @@ export default function(state = initialState, action) {
           if (habit._id === action.payload.id) {
             return {
               ...habit,
-              history: [...habit.history, action.payload.today]
+              history: [...habit.history, action.payload.today],
+              currentStreak: action.payload.currentStreak,
+              maxStreak: action.payload.maxStreak,
+              totalDays: action.payload.totalDays
             };
           }
           return habit;

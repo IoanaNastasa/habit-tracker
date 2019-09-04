@@ -37,17 +37,19 @@ export const updateHabit = (id, today = "00/00/00") => (dispatch, getState) => {
   // new value for longest streak. If new current streak > maxStreak => maxStreak = new current else same
   let maxStreak =
     habit.maxStreak < currentStreak ? currentStreak : habit.maxStreak;
-  //
+  // new value for total number of days when habit was done
+  let totalDays = habit.totalDays + 1;
   axios
     .put(`api/habits/${id}`, {
       today: today,
       currentStreak: currentStreak,
-      maxStreak: maxStreak
+      maxStreak: maxStreak,
+      totalDays: totalDays
     })
     .then(res => {
       dispatch({
         type: UPDATE_HABIT,
-        payload: { id, today }
+        payload: { id, today, currentStreak, maxStreak, totalDays }
       });
     })
     .catch(err => console.log(err));

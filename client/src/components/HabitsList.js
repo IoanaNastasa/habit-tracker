@@ -2,6 +2,8 @@ import React from "react";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChecks } from "@fortawesome/free-solid-svg-icons";
 
 import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";

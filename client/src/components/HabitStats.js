@@ -16,13 +16,13 @@ class HabitStats extends React.Component {
     this.setState({ habit: habit });
   }
   render() {
-    console.log(this.state.habit.history);
-
+    let { history, currentStreak, maxStreak, totalDays } = this.state.habit;
     return (
       <div>
-        <Calendar history={this.state.habit.history} />
-        <StatsCard />
-        <StatsCard />
+        <Calendar history={history} />
+        <StatsCard name="Current Streak" value={currentStreak} />
+        <StatsCard name="Maximum Streak" value={maxStreak} />
+        <StatsCard name="Total" value={totalDays} />
       </div>
     );
   }

@@ -16,7 +16,10 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newHabit = new Habit({
     habitName: req.body.habitName,
-    history: req.body.history
+    history: req.body.history,
+    currentStreak: req.body.currentStreak,
+    maxStreak: req.body.maxStreak,
+    totalDays: req.body.totalDays
   });
   newHabit.save().then(habit => res.json(habit));
 });
@@ -40,7 +43,8 @@ router.put("/:id", (req, res) => {
       $push: { history: req.body.today },
       $set: {
         currentStreak: req.body.currentStreak,
-        maxStreak: req.body.maxStreak
+        maxStreak: req.body.maxStreak,
+        totalDays: req.body.totalDays
       }
     }
     // { new: true }

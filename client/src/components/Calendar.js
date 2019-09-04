@@ -18,7 +18,6 @@ class Calendar extends Component {
 
   // on button click changes month or year
   prevMonth = () => {
-    console.log(this.props.history);
     if (this.state.calendarMonth === 0) {
       this.setState({ calendarMonth: 11 });
     } else {
@@ -41,8 +40,6 @@ class Calendar extends Component {
   // method for showing days in table cells
   calendarDays = () => {
     let history = this.props.history;
-    console.log(history);
-
     // when firstday = 0(Sunday) change to 1 ---> rendered calendar is Mon-Sunday
     let firstDay =
       new Date(this.state.calendarYear, this.state.calendarMonth).getDay() == 0
@@ -68,11 +65,6 @@ class Calendar extends Component {
         ) {
           // check if habit's history contains the date and add class if true
           if (history) {
-            console.log(
-              `${this.state.calendarMonth}/${daysInMonth - currentDays + 1}/${
-                this.state.calendarYear
-              }`
-            );
             cls = history.includes(
               `${this.state.calendarMonth + 1}/${daysInMonth -
                 currentDays +
@@ -80,7 +72,6 @@ class Calendar extends Component {
             )
               ? "text-center bg-warning"
               : "text-center";
-            console.log(cls);
           }
           // /new
           col.push(
