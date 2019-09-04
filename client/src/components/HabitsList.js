@@ -8,6 +8,7 @@ import { faChecks } from "@fortawesome/free-solid-svg-icons";
 import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";
 import NewHabit from "./NewHabit";
+import HabitListElement from "./HabitListElement";
 
 class HabitsList extends React.Component {
   static propTypes = {
@@ -39,31 +40,13 @@ class HabitsList extends React.Component {
     return (
       <div>
         <ListGroup className="my-5">
-          {habits.map(({ habitName, _id }) => (
-            <ListGroupItem
+          {habits.map(({ habitName, _id, history }) => (
+            <HabitListElement
               key={_id}
-              className="list-group-item-light d-flex flex-row my-2 py-4"
-            >
-              <div className="form-check flex-grow-1">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label
-                  className="form-check-label h5 primary"
-                  htmlFor="defaultCheck1"
-                >
-                  {`Did you ${habitName} today?`}
-                </label>
-              </div>
-              <Button onClick={this.onDeleteClick.bind(this, _id)}>
-                Delete Habit
-              </Button>
-              <Button onClick={this.onDoneClick.bind(this, _id)}>DONE</Button>
-              <Link to={{ pathname: `/stats`, id: _id }}>stats</Link>
-            </ListGroupItem>
+              habitName={habitName}
+              id={_id}
+              history={history}
+            />
           ))}
           <NewHabit />
         </ListGroup>
@@ -71,6 +54,7 @@ class HabitsList extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   habits: state.habits
 });
