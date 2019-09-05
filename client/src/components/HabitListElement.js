@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ListGroupItem, Button } from "reactstrap";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 
@@ -22,18 +22,6 @@ function HabitListElement(props) {
     return newdate;
   };
   const onDeleteClick = () => props.deleteHabit(props.id);
-  // const onDoneClick = () => {
-  //   console.log(`click id: ${props.id}`);
-  //   const today = newDate();
-  //   console.log(today);
-  //   props.updateHabit(props.id, today);
-  // };
-  // if ({ done } === true) {
-  //   setDone(false);
-  // } else {
-  //   setDone(true);
-  // }
-
   const onCheck = () => {
     const today = newDate();
     if (done === false) {
@@ -62,7 +50,6 @@ function HabitListElement(props) {
           </label>
         </div>
         <Button onClick={onDeleteClick}>Delete Habit</Button>
-        {/* <Button onClick={onDoneClick}>DONE</Button> */}
         <Link to={{ pathname: `/stats`, id: props.id }}>stats</Link>
       </ListGroupItem>
     </div>

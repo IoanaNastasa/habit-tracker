@@ -8,6 +8,7 @@ import {
   FormGroup,
   Button
 } from "reactstrap";
+
 import { connect } from "react-redux";
 import { addHabit } from "../actions/habitActions";
 
@@ -49,7 +50,7 @@ class NewHabit extends React.Component {
                 placeholder="e.g. read, meditate"
               />
             </InputGroup>
-            <Button color="danger" style={{ marginTop: "2rem" }} block>
+            <Button class="btn btn-warning" style={{ marginTop: "2rem" }} block>
               Add habit
             </Button>
           </FormGroup>
