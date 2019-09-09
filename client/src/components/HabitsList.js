@@ -1,9 +1,7 @@
 import React from "react";
-import { ListGroup, ListGroupItem, Button } from "reactstrap";
+import { ListGroup } from "reactstrap";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChecks } from "@fortawesome/free-solid-svg-icons";
 
 import { getHabits, deleteHabit, updateHabit } from "../actions/habitActions";
 import PropTypes from "prop-types";
@@ -13,7 +11,8 @@ import HabitListElement from "./HabitListElement";
 class HabitsList extends React.Component {
   static propTypes = {
     getHabits: PropTypes.func.isRequired,
-    deleteHabit: PropTypes.func.isRequired
+    deleteHabit: PropTypes.func.isRequired,
+    updateHabit: PropTypes.func.isRequired
   };
   componentDidMount() {
     this.props.getHabits();
@@ -39,7 +38,7 @@ class HabitsList extends React.Component {
     const { habits } = this.props.habits;
     return (
       <div>
-        <ListGroup className="my-5">
+        <ListGroup className="my-5 px-3">
           {habits.map(({ habitName, _id, history }) => (
             <HabitListElement
               key={_id}

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../style.css";
+import PropTypes from "prop-types";
 import { ListGroupItem, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -35,7 +37,7 @@ function HabitListElement(props) {
         key={props.id}
         className="list-group-item-light d-flex flex-row my-2 py-4"
       >
-        <div className="form-check flex-grow-1">
+        <div className="form-check flex-grow-1 ">
           <input
             className="form-check-input"
             checked={done}
@@ -49,13 +51,19 @@ function HabitListElement(props) {
             {`Did you ${props.habitName} today?`}
           </label>
         </div>
-        <Button onClick={onDeleteClick}>Delete Habit</Button>
+        <Button className="mx-3 btn btn-warning" onClick={onDeleteClick}>
+          Delete Habit
+        </Button>
         <Link to={{ pathname: `/stats`, id: props.id }}>stats</Link>
       </ListGroupItem>
     </div>
   );
 }
-
+HabitListElement.propTypes = {
+  getHabits: PropTypes.func.isRequired,
+  deleteHabit: PropTypes.func.isRequired,
+  updateHabit: PropTypes.func.isRequired
+};
 const mapStateToProps = state => ({
   habits: state.habits
 });

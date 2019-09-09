@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, NavItem, NavLink, Container } from "reactstrap";
+import { Navbar, Nav, NavItem, Container } from "reactstrap";
 import { NavLink as NavLinkRouter } from "react-router-dom";
 class AppNavbar extends React.Component {
   render() {
@@ -9,17 +9,19 @@ class AppNavbar extends React.Component {
           <Container>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLinkRouter to="/">Home</NavLinkRouter>
+                <NavLinkRouter class="nav-link" to="/">
+                  Home
+                </NavLinkRouter>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLinkRouter class="nav-link" to="/">
                   Login
-                </NavLink>
+                </NavLinkRouter>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLinkRouter class="nav-link" to="/">
                   Logout
-                </NavLink>
+                </NavLinkRouter>
               </NavItem>
             </Nav>
           </Container>

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   ListGroupItem,
   InputGroup,
@@ -14,6 +15,9 @@ import { addHabit } from "../actions/habitActions";
 
 class NewHabit extends React.Component {
   state = { habitName: "" };
+  static propTypes = {
+    addHabits: PropTypes.func.isRequired
+  };
   newDate() {
     const dateObj = new Date();
     const month = dateObj.getMonth() + 1; //months from 1-12

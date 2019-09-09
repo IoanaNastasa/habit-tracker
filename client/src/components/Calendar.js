@@ -42,7 +42,7 @@ class Calendar extends Component {
     let history = this.props.history;
     // when firstday = 0(Sunday) change to 1 ---> rendered calendar is Mon-Sunday
     let firstDay =
-      new Date(this.state.calendarYear, this.state.calendarMonth).getDay() == 0
+      new Date(this.state.calendarYear, this.state.calendarMonth).getDay() === 0
         ? 7
         : new Date(this.state.calendarYear, this.state.calendarMonth).getDay();
     let daysInMonth = new Date(
@@ -115,7 +115,7 @@ class Calendar extends Component {
       "December"
     ];
     return (
-      <div>
+      <div className="mt-5 px-3">
         <div id="month-year">
           <div id="month" className="d-flex flex-row">
             <Button color="link" onClick={this.prevMonth}>

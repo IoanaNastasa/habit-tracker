@@ -20,9 +20,13 @@ class HabitStats extends React.Component {
     return (
       <div>
         <Calendar history={history} />
-        <StatsCard name="Current Streak" value={currentStreak} />
-        <StatsCard name="Maximum Streak" value={maxStreak} />
-        <StatsCard name="Total" value={totalDays} />
+        <div className="container mt-4">
+          <div className="row">
+            <StatsCard name="Current Streak" value={currentStreak} />
+            <StatsCard name="Maximum Streak" value={maxStreak} />
+            <StatsCard name="Total" value={totalDays} />
+          </div>
+        </div>
       </div>
     );
   }

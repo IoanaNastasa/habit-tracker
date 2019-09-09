@@ -3,9 +3,9 @@ import reactstrap from "reactstrap";
 
 function StatsCard(props) {
   return (
-    <div>
+    <div className="col">
       <div
-        className="card text-white bg-danger mb-3"
+        className="card text-white bg-warning mb-3"
         style={{ maxWidth: "18rem" }}
       >
         <div className="card-header text-center">{props.name}</div>
