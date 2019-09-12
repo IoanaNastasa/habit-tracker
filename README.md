@@ -2,6 +2,10 @@ Habit Tracker App
 
 A habit and productivity app that keeps track of the habit's evolution.
 
+## Features
+
+Add the habit to track. Check on the days when you completed it. Check the stats(days when it was completed on the calendar, the current and the longest streak, the total days when it was done). Delete the habit if you no longer want to track it.
+
 ## Technology
 
 - React
@@ -16,22 +20,11 @@ A habit and productivity app that keeps track of the habit's evolution.
 
 1. Fork repo and clone or download it.
 2. Install dependencies via npm or yarn using `npm init` or `yarn`
-3. Run `npm run dev` to start project.
-   .._ Runs the server at [http://localhost:5000] and the client at [http://localhost:3000].
-   .._ The pages reload on save.
+3. Run `npm run dev` to start project.Runs the server at [http://localhost:5000] and the client at [http://localhost:3000].
 
-## Features
-
-- add habits and check them when done
-- check stats for each habit
-  .._ calendar that highlights days when the habit was done
-  .._ the current streak
-  .._ the longest streak
-  .._ total days when habit was done
-
-# TO-DO
+## TO-DO
 
 - Add error actions
-- Implement JWT Authentication
+- Implement JWT Authentication/OAuth
 - Work on design, possibly by removing reactstrap and using JSX + SASS
 - Deploy to Heroku
