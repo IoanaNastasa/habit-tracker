@@ -10,7 +10,7 @@ Add the habit to track. Check on the days when you completed it. Check the stats
 
 - React
 - Redux
-- React Thunk
+- Redux Thunk
 - React Router
 - Reactstrap
 - MongoDB
