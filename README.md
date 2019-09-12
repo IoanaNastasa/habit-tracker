@@ -1,4 +1,4 @@
-Habit Tracker App
+###Habit Tracker App
 
 A habit and productivity app that keeps track of the habit's evolution.
 
