@@ -38,17 +38,19 @@ class HabitsList extends React.Component {
     const { habits } = this.props.habits;
     return (
       <div>
-        <ListGroup className="my-5 px-3">
-          {habits.map(({ habitName, _id, history }) => (
-            <HabitListElement
-              key={_id}
-              habitName={habitName}
-              id={_id}
-              history={history}
-            />
-          ))}
-          <NewHabit />
-        </ListGroup>
+        <div>
+          <ListGroup className="my-5 px-3">
+            {habits.map(({ habitName, _id, history }) => (
+              <HabitListElement
+                key={_id}
+                habitName={habitName}
+                id={_id}
+                history={history}
+              />
+            ))}
+            <NewHabit />
+          </ListGroup>
+        </div>
       </div>
     );
   }

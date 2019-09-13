@@ -8,6 +8,7 @@ import store from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import HabitStats from "./components/HabitStats";
+import Register from "./components/Register";
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
           <AppNavBar />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/stats" component={HabitStats} />
+          <Route exact path="/register" component={Register} />
         </Router>
       </Provider>
     );

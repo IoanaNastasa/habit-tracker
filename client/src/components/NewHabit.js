@@ -16,7 +16,7 @@ import { addHabit } from "../actions/habitActions";
 class NewHabit extends React.Component {
   state = { habitName: "" };
   static propTypes = {
-    addHabits: PropTypes.func.isRequired
+    addHabits: PropTypes.func
   };
   newDate() {
     const dateObj = new Date();
@@ -54,7 +54,11 @@ class NewHabit extends React.Component {
                 placeholder="e.g. read, meditate"
               />
             </InputGroup>
-            <Button class="btn btn-warning" style={{ marginTop: "2rem" }} block>
+            <Button
+              className="btn btn-warning"
+              style={{ marginTop: "2rem" }}
+              block
+            >
               Add habit
             </Button>
           </FormGroup>

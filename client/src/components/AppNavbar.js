@@ -9,17 +9,17 @@ class AppNavbar extends React.Component {
           <Container>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLinkRouter class="nav-link" to="/">
+                <NavLinkRouter className="nav-link" to="/">
                   Home
                 </NavLinkRouter>
               </NavItem>
               <NavItem>
-                <NavLinkRouter class="nav-link" to="/">
-                  Login
+                <NavLinkRouter className="nav-link" to="/register">
+                  Register
                 </NavLinkRouter>
               </NavItem>
               <NavItem>
-                <NavLinkRouter class="nav-link" to="/">
+                <NavLinkRouter className="nav-link" to="/">
                   Logout
                 </NavLinkRouter>
               </NavItem>
