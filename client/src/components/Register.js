@@ -8,34 +8,43 @@ import PropTypes from "prop-types";
 
 function Register(props) {
   return (
-    <div>
-      <div className="login-container ml-5 mt-5">
-        <h1 className="mb-3">Sign Up</h1>
-        <Form>
-          <FormGroup>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              style={{ width: "30%" }}
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              style={{ width: "30%" }}
-              type="password"
-              placeholder="Enter password"
-              name="password"
-              required
-            />
-          </FormGroup>
-          <Button>Sign Up</Button>
-        </Form>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="login-container ml-5 mt-5 col-sm-9 col-md">
+          <h1 className="mb-5">Sign Up</h1>
+          <Form>
+            <FormGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                required
+              />
+            </FormGroup>
+            <Button>Sign Up</Button>
+          </Form>
+        </div>
+        <ReactSVG
+          src={BuildingBlocks}
+          beforeInjection={svg => {
+            svg.classList.add("d-none");
+            svg.classList.add("d-md-block");
+            svg.classList.add("img-fluid");
+          }}
+          className="col-sm-7 mt-5 mr-5"
+        />
       </div>
-      <ReactSVG className="d-sm-none d-md-block" src={BuildingBlocks} />
+      {/* end of row */}
     </div>
   );
 }
