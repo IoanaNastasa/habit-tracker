@@ -19,7 +19,7 @@ Add the habit to track. Check on the days when you completed it. Check the stats
 ## Getting Started
 
 1. Fork repo and clone or download it.
-2. Install dependencies via npm or yarn using `npm init` or `yarn`
+2. Install dependencies via npm or yarn using `npm install` or `yarn`
 3. Run `npm run dev` to start project.Runs the server at [http://localhost:5000] and the client at [http://localhost:3000].
 
 ## TO-DO
